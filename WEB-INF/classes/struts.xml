@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<package name="laojunsen" extends="struts-default" namespace="/">
+		<!-- 登录 -->
+		<action name="checkLogin" class="cn.laojunsen.action.LoginAction">
+			<result name="success">main.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<!-- 用户管理 -->
+		<!-- 用户信息 -->
+		<action	name="userManage" class="cn.laojunsen.action.userManageAction">
+			<result name="success">/admin/super_userManage.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<!-- 用户注册 -->
+		<action	name="register" class="cn.laojunsen.action.registerAction">
+			<result name="success">login.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<!-- 用户信息修改 -->
+		<action	name="ci" class="cn.laojunsen.action.ciAction">
+			<result name="success">main.jsp</result>
+			<result name="input">main.jsp</result>
+		</action>
+		
+		<!-- 用户密码修改 -->
+		<action	name="cp" class="cn.laojunsen.action.cpAction">
+			<result name="success">main.jsp</result>
+			<result name="input">main.jsp</result>
+		</action>
+		
+		<!-- 用户删除 -->
+		<action	name="deluser" class="cn.laojunsen.action.deluserAction">
+			<result name="success">/admin/super_userManage.jsp</result>
+			<result name="input">/admin/super_userManage.jsp</result>
+		</action>
+		
+		<!-- 用户权限修改 -->
+		<action	name="edituserType" class="cn.laojunsen.action.edituserTypeAction">
+			<result name="success">/admin/super_userManage.jsp</result>
+			<result name="input">/admin/super_userManage.jsp</result>
+		</action>
+		
+		<!-- 用户搜索 -->
+		<action	name="searchuser" class="cn.laojunsen.action.searchuserAction">
+			<result name="success">/admin/super_userManage.jsp</result>
+			<result name="input">/admin/super_userManage.jsp</result>
+		</action>
+		
+		
+		<!-- 档案管理 -->
+		<!-- 档案信息 -->
+		<action	name="archivesManage" class="cn.laojunsen.action.archivesManageAction">
+			<result name="success">archivesManage.jsp</result>
+			<result name="input">archivesManage.jsp</result>
+		</action>
+		
+		<!-- 添加档案 -->
+		<action	name="addarchives" class="cn.laojunsen.action.addarchivesAction" method="execute">
+			<param name="savePath">/pdf</param>
+			<result name="success">archivesManage.jsp</result>
+			<result name="input">archivesManage.jsp</result>
+			<param name="allowedExtensions">.pdf</param><!-- 设置上传文件允许的后缀名 -->
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5242880</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- 编辑档案 -->
+		<action	name="editarchives" class="cn.laojunsen.action.editarchivesAction" method="execute">
+			<param name="savePath">/pdf</param>
+			<result name="success">archivesManage.jsp</result>
+			<result name="input">archivesManage.jsp</result>
+			<param name="allowedExtensions">.pdf</param><!-- 设置上传文件允许的后缀名 -->
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5242880</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- 删除档案 -->
+		<action	name="delarchives" class="cn.laojunsen.action.delarchivesAction">
+			<result name="success">archivesManage.jsp</result>
+			<result name="input">archivesManage.jsp</result>
+		</action>
+		
+		<!-- 搜索档案 -->
+		<action	name="searcharchives" class="cn.laojunsen.action.searcharchivesAction">
+			<result name="success">archivesManage.jsp</result>
+			<result name="input">archivesManage.jsp</result>
+		</action>
+		
+		<!-- 申请查阅档案 -->
+		<action	name="applyarchives" class="cn.laojunsen.action.applyarchivesAction">
+			<result name="success">archivesManage.jsp</result>
+			<result name="input">archivesManage.jsp</result>
+		</action>
+		
+		<!-- 档案类目管理 -->
+		<!-- 档案类目信息 -->
+		<action	name="archivesTypeManage" class="cn.laojunsen.action.archivesTypeManageAction">
+			<result name="success">/admin/archivesTypeManage.jsp</result>
+			<result name="input">/admin/archivesTypeManage.jsp</result>
+		</action>
+		
+		<!-- 档案类目搜索 -->
+		<action	name="searcharchivesType" class="cn.laojunsen.action.searcharchivesTypeAction">
+			<result name="success">/admin/archivesTypeManage.jsp</result>
+			<result name="input">/admin/archivesTypeManage.jsp</result>
+		</action>
+		
+		<!-- 档案类目增加 -->
+		<action	name="addarchivesType" class="cn.laojunsen.action.addarchivesTypeAction">
+			<result name="success">/admin/archivesTypeManage.jsp</result>
+			<result name="input">/admin/archivesTypeManage.jsp</result>
+		</action>
+		
+		<!-- 档案类目编辑 -->
+		<action	name="editarchivesType" class="cn.laojunsen.action.editarchivesTypeAction">
+			<result name="success">/admin/archivesTypeManage.jsp</result>
+			<result name="input">/admin/archivesTypeManage.jsp</result>
+		</action>
+		
+		<!-- 档案类目删除 -->
+		<action	name="delarchivesType" class="cn.laojunsen.action.delarchivesTypeAction">
+			<result name="success">/admin/archivesTypeManage.jsp</result>
+			<result name="input">/admin/archivesTypeManage.jsp</result>
+		</action>
+		
+		<!-- 档案申请管理-->
+		<!-- 管理员审批 -->
+		<action	name="approve" class="cn.laojunsen.action.approveAction">
+			<result name="success">/admin/approve.jsp</result>
+			<result name="input">/admin/approve.jsp</result>
+		</action>
+		
+		<!-- 同意或拒绝用户申请 -->
+		<action	name="passorrefuseapprove" class="cn.laojunsen.action.passorrefuseapproveAction">
+			<result name="success">/admin/approve.jsp</result>
+			<result name="input">/admin/approve.jsp</result>
+		</action>
+		
+		<!-- 用户的申请记录 -->
+		<action	name="borrow" class="cn.laojunsen.action.borrowAction">
+			<result name="success">borrow.jsp</result>
+			<result name="input">borrow.jsp</result>
+		</action>
+		
+		<!-- 用户的再次申请 -->
+		<action	name="applyagainarchives" class="cn.laojunsen.action.applyagainarchivesAction">
+			<result name="success">borrow.jsp</result>
+			<result name="input">borrow.jsp</result>
+		</action>
+		
+		<!-- 申请或审批列表搜索 -->
+		<action	name="searchapproveorborrow" class="cn.laojunsen.action.searchapproveorborrowAction">
+			<result name="success1">/admin/approve.jsp</result>
+			<result name="success2">borrow.jsp</result>
+		</action>
+		
+		<!-- 查看档案 -->
+		<action	name="checkarchives" class="cn.laojunsen.action.checkarchivesAction">
+			<result name="success">/pdfjs/web/viewer.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+		
+	</package>
+</struts>
